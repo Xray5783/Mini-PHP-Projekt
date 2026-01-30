@@ -20,12 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // TODO: validate (name >= 2, message >= 5)
     if (strlen($name) < 2 || strlen($msg) < 5) {
       array_push($errors, "Fehler");
+    } else {
+      // TODO: if ok -> add_message + redirect
+      add_message($name, $msg);
+      header("/");
     }
-
-
-    // TODO: if ok -> add_message + redirect
-
-
 }
 
 $messages = []; // TODO: load_messages()
