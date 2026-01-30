@@ -14,13 +14,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $msg  = $_POST['message']; // $_POST['message']
 
     // TODO: keep old values
-    // $oldName = ...
-    // $oldMsg  = ...
+    $oldName = $name;
+    $oldMsg  = $msg;
 
     // TODO: validate (name >= 2, message >= 5)
-    // $errors[] = '...';
+    if (($name >= 2 and $msg >= 5) == false) {
+      $errors[] = 'Message/Name to short';
+    }
+    
 
     // TODO: if ok -> add_message + redirect
+
+
 }
 
 $messages = []; // TODO: load_messages()
