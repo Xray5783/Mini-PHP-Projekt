@@ -10,20 +10,26 @@ $oldMsg  = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // TODO: read input
-    $name = ''; // $_POST['name']
-    $msg  = ''; // $_POST['message']
+    $name = $_POST['name']; // $_POST['name']
+    $msg  = $_POST['message']; // $_POST['message']
 
     // TODO: keep old values
-    // $oldName = ...
-    // $oldMsg  = ...
+    $oldName = $name;
+    $oldMsg  = $msg;
 
     // TODO: validate (name >= 2, message >= 5)
-    // $errors[] = '...';
 
-    // TODO: if ok -> add_message + redirect
+    if (strlen($name) < 2 || strlen($msg) < 5) {
+      array_push($errors, "Fehler");
+    } else {
+      // TODO: if ok -> add_message + redirect
+      add_message($name, $msg);
+      header("/");
+    }
 }
 
-$messages = []; // TODO: load_messages()
+$messages = load_messages(); // TODO: load_messages()
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -37,7 +43,8 @@ $messages = []; // TODO: load_messages()
 
   <?php if ($errors): ?>
     <ul>
-      <?php /* TODO: print errors */ ?>
+      <?php echo end($errors); ?>
+
     </ul>
   <?php endif; ?>
 
@@ -45,14 +52,14 @@ $messages = []; // TODO: load_messages()
     <p>
       <label>
         Name:
-        <input name="name" required minlength="2" value="<?php /* TODO: echo e($oldName) */ ?>">
+        <input name="name" required minlength="2" value="<?php echo e($oldName)  ?>">
       </label>
     </p>
 
     <p>
       <label>
         Message:<br>
-        <textarea name="message" required minlength="5" rows="4" cols="50"><?php /* TODO: echo e($oldMsg) */ ?></textarea>
+        <textarea name="message" required minlength="5" rows="4" cols="50"><?php echo e($oldMsg)  ?></textarea>
       </label>
     </p>
 
@@ -70,11 +77,11 @@ $messages = []; // TODO: load_messages()
   <?php foreach ($messages as $m): ?>
     <div>
       <p>
-        <strong><?php /* TODO: echo e($m['name']) */ ?></strong>
-        <small><?php /* TODO: echo date(...) */ ?></small>
+        <strong><?php echo e($m['name']);  ?></strong>
+        <small><?php echo date("Y-m-d");  ?></small>
       </p>
 
-      <p><?php /* TODO: echo nl2br(e($m['message'])) */ ?></p>
+      <p><?php echo nl2br(e($m['message'])); ?></p>
       <hr>
     </div>
   <?php endforeach; ?>
