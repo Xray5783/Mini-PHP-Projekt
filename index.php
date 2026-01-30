@@ -10,8 +10,8 @@ $oldMsg  = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // TODO: read input
-    $name = ''; // $_POST['name']
-    $msg  = ''; // $_POST['message']
+    $name = $_POST['name']; // $_POST['name']
+    $msg  = $_POST['message']; // $_POST['message']
 
     // TODO: keep old values
     // $oldName = ...
