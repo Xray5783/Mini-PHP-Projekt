@@ -41,7 +41,7 @@ $messages = load_messages(); // TODO: load_messages()
 
   <?php if ($errors): ?>
     <ul>
-      <?php echo $errors[-1] ?>
+      <?php echo end($errors); ?>
     </ul>
   <?php endif; ?>
 
@@ -49,14 +49,14 @@ $messages = load_messages(); // TODO: load_messages()
     <p>
       <label>
         Name:
-        <input name="name" required minlength="2" value="<?php /* TODO: echo e($oldName) */ ?>">
+        <input name="name" required minlength="2" value="<?php echo e($oldName)  ?>">
       </label>
     </p>
 
     <p>
       <label>
         Message:<br>
-        <textarea name="message" required minlength="5" rows="4" cols="50"><?php /* TODO: echo e($oldMsg) */ ?></textarea>
+        <textarea name="message" required minlength="5" rows="4" cols="50"><?php echo e($oldMsg)  ?></textarea>
       </label>
     </p>
 
