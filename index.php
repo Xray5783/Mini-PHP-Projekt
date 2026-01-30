@@ -18,10 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $oldMsg  = $msg;
 
     // TODO: validate (name >= 2, message >= 5)
-    if (($name >= 2 and $msg >= 5) == false) {
-      $errors[] = 'Message/Name to short';
+    if (strlen($name) < 2 || strlen($msg) < 5) {
+      array_push($errors, "Fehler");
     }
-    
+
 
     // TODO: if ok -> add_message + redirect
 
