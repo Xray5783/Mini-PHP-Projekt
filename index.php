@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$messages = []; // TODO: load_messages()
+$messages = load_messages(); // TODO: load_messages()
 ?>
 <!doctype html>
 <html lang="en">
@@ -41,7 +41,7 @@ $messages = []; // TODO: load_messages()
 
   <?php if ($errors): ?>
     <ul>
-      <?php /* TODO: print errors */ ?>
+      <?php echo $errors[-1] ?>
     </ul>
   <?php endif; ?>
 
@@ -74,11 +74,11 @@ $messages = []; // TODO: load_messages()
   <?php foreach ($messages as $m): ?>
     <div>
       <p>
-        <strong><?php /* TODO: echo e($m['name']) */ ?></strong>
-        <small><?php /* TODO: echo date(...) */ ?></small>
+        <strong><?php echo e($m['name']);  ?></strong>
+        <small><?php echo date("Y-m-d");  ?></small>
       </p>
 
-      <p><?php /* TODO: echo nl2br(e($m['message'])) */ ?></p>
+      <p><?php echo nl2br(e($m['message'])); ?></p>
       <hr>
     </div>
   <?php endforeach; ?>
