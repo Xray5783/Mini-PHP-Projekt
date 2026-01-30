@@ -1,3 +1,8 @@
+# Custom files
+config.php
+messages.php
+data/*
+
 # OS / editor
 .DS_Store
 Thumbs.db
